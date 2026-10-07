@@ -3,128 +3,39 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0b0d10">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Meu Caixa">
-<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#05090c">
 <title>Meu Caixa</title>
 <style>
-:root{--bg:#090b0f;--panel:#11151b;--panel2:#171c23;--line:#252c35;--text:#f5f7fa;--muted:#8f98a5;--gold:#d7b36a;--green:#3ddc97;--red:#ff6572;--shadow:0 18px 45px rgba(0,0,0,.28)}
-*{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at 50% -10%,#20262f 0,#0b0d10 38%,#07080a 100%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
-button,input,select{font:inherit} button{border:0}
-.app{max-width:560px;margin:auto;min-height:100vh;padding:18px 16px 96px}
-.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:21px}.logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(145deg,#252b34,#0e1116);border:1px solid #343b45;display:grid;place-items:center;color:var(--gold);box-shadow:var(--shadow)}.top small{color:var(--muted)}
-.screen{display:none}.screen.active{display:block}
-.hero{background:linear-gradient(145deg,#1a2028,#0e1116);border:1px solid #2a313b;border-radius:24px;padding:22px;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;right:-80px;top:-100px;background:rgba(215,179,106,.12)}.label{color:var(--muted);font-size:13px}.balance{font-size:34px;font-weight:850;margin:8px 0 18px;letter-spacing:-1px}.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{background:#0c1015;border:1px solid #252c35;border-radius:16px;padding:13px}.stat b{display:block;font-size:18px;margin-top:5px}.green{color:var(--green)}.red{color:var(--red)}.gold{color:var(--gold)}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px}.card{background:rgba(17,21,27,.96);border:1px solid var(--line);border-radius:19px;padding:16px}.card h3{margin:0 0 6px;font-size:15px}.muted{color:var(--muted)}
-.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.btn{padding:14px;border-radius:15px;background:#1a2028;color:#fff;border:1px solid #2e3641;font-weight:750}.btn.primary{background:linear-gradient(135deg,#d9b96f,#a98035);color:#111}.btn.redbtn{background:#241418;border-color:#55303a;color:#ff9aa3}
-.section-head{display:flex;justify-content:space-between;align-items:center;margin:24px 2px 10px}.section-head h2{font-size:19px;margin:0}.link{background:none;color:var(--gold);font-weight:700}
-.tx{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid #20262e}.tx:last-child{border-bottom:0}.ico{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:#191f27}.txmain{flex:1}.txmain b{display:block}.txmain small{color:var(--muted)}.amount{font-weight:800}
-.empty{text-align:center;padding:28px 10px;color:var(--muted)}
-.bottom{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);width:min(528px,calc(100% - 24px));display:grid;grid-template-columns:repeat(4,1fr);gap:5px;background:rgba(15,18,23,.94);backdrop-filter:blur(18px);border:1px solid #2a313a;border-radius:20px;padding:7px;z-index:20;box-shadow:0 15px 45px rgba(0,0,0,.45)}.nav{background:none;color:#7f8895;padding:8px 4px;border-radius:14px;font-size:11px;font-weight:700}.nav.active{background:#222932;color:#fff}.nav span{display:block;font-size:19px;margin-bottom:2px}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:flex-end;z-index:30}.modal.show{display:flex}.sheet{width:100%;max-width:560px;margin:auto;background:#11151b;border:1px solid #2a313b;border-radius:26px 26px 0 0;padding:20px 16px 30px}.sheet h2{margin:0 0 16px}.field{margin:11px 0}.field label{display:block;color:var(--muted);font-size:12px;margin-bottom:6px}.field input,.field select{width:100%;padding:13px 14px;background:#0b0e12;color:#fff;border:1px solid #2b333d;border-radius:13px;outline:none}.modal-actions{display:flex;gap:9px;margin-top:15px}.modal-actions button{flex:1}
-.table{width:100%;border-collapse:collapse}.table td{padding:11px 4px;border-bottom:1px solid #20262e;font-size:13px}.bar{height:9px;background:#252b33;border-radius:20px;overflow:hidden;margin-top:8px}.bar i{display:block;height:100%;background:var(--gold);border-radius:20px}.pro{background:linear-gradient(145deg,#292118,#14110d);border:1px solid #66522e;border-radius:22px;padding:20px}.pro h2{margin:0 0 5px}.price{font-size:29px;font-weight:850;margin:10px 0}.pill{display:inline-block;border:1px solid #705a31;color:var(--gold);padding:5px 9px;border-radius:99px;font-size:11px;font-weight:800}
-.toast{position:fixed;top:16px;left:50%;transform:translateX(-50%) translateY(-20px);background:#e9fff5;color:#092017;padding:11px 15px;border-radius:12px;font-weight:750;opacity:0;pointer-events:none;transition:.25s;z-index:50}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-@media(min-width:700px){.app{padding-top:28px}.bottom{bottom:20px}}
+:root{--bg:#05090c;--card:#0d151c;--card2:#101c25;--text:#f5f7f8;--muted:#8e9aa5;--green:#18e88b;--red:#ff4760;--gold:#f4c85b;--line:#20303b}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(160deg,#030609,#071017);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+.app{max-width:480px;margin:auto;min-height:100vh;padding-bottom:88px}.top{padding:20px 18px 8px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;gap:10px;align-items:center}.logo{width:42px;height:42px;border:2px solid var(--green);border-radius:13px;display:grid;place-items:center;font-size:22px;box-shadow:0 0 18px #18e88b33}.brand b{font-size:20px}.brand b span{color:var(--green)}.brand small{display:block;color:var(--muted);font-size:11px}.iconbtn{background:#101a21;border:1px solid var(--line);color:#fff;border-radius:12px;padding:10px}
+main{padding:8px 16px}.hello{margin:8px 2px 14px}.hello h2{margin:0 0 3px;font-size:22px}.hello p{margin:0;color:var(--muted);font-size:13px}
+.balance{padding:18px;border-radius:20px;background:linear-gradient(135deg,#087846,#13c879);box-shadow:0 14px 35px #00b96a26;margin-bottom:14px}.balance small{opacity:.9}.balance strong{display:block;font-size:30px;margin-top:4px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.stat{background:var(--card);border:1px solid var(--line);padding:12px;border-radius:15px}.stat small{color:var(--muted);display:block}.stat b{font-size:15px}.green{color:var(--green)}.red{color:var(--red)}.gold{color:var(--gold)}
+.section{margin-top:22px;display:flex;justify-content:space-between;align-items:center}.section h3{margin:0}.link{color:var(--green);font-size:12px}
+.list{margin-top:10px;background:var(--card);border:1px solid var(--line);border-radius:17px;overflow:hidden}.item{display:flex;align-items:center;gap:10px;padding:13px;border-bottom:1px solid var(--line)}.item:last-child{border:0}.circle{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:800}.circle.in{background:#18e88b1c;color:var(--green)}.circle.out{background:#ff47601c;color:var(--red)}.item .mid{flex:1}.item b{display:block;font-size:14px}.item small{color:var(--muted)}.amount{font-weight:800}
+.empty{padding:25px;text-align:center;color:var(--muted)}
+.bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(480px,100%);background:#071017ee;backdrop-filter:blur(14px);border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr 1fr 1fr;padding:9px 10px calc(9px + env(safe-area-inset-bottom));z-index:5}.nav{border:0;background:none;color:var(--muted);font-size:11px}.nav.active{color:var(--green)}.plus{width:48px;height:48px;border-radius:50%;margin:-23px auto 0;background:var(--green);color:#00150c;border:4px solid #071017;font-size:28px;font-weight:800}
+.modal{position:fixed;inset:0;background:#0009;display:none;align-items:flex-end;z-index:10}.modal.show{display:flex}.sheet{width:min(480px,100%);margin:auto;background:#0a1218;border:1px solid var(--line);border-radius:24px 24px 0 0;padding:20px}.sheet h2{margin-top:0}.type{display:flex;gap:8px}.type button{flex:1;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:#fff}.type .sel.in{background:#18e88b22;border-color:var(--green);color:var(--green)}.type .sel.out{background:#ff476022;border-color:var(--red);color:var(--red)}input,select{width:100%;padding:13px;margin:8px 0;background:#0d1921;border:1px solid #263946;border-radius:12px;color:#fff;font-size:15px}.save{width:100%;padding:14px;border:0;border-radius:13px;background:var(--green);font-weight:800;margin-top:8px}.close{float:right;background:none;border:0;color:#fff;font-size:22px}
+.pro{margin-top:18px;padding:18px;border:1px solid #8d6b22;border-radius:18px;background:linear-gradient(135deg,#16150f,#0d1114)}.pro h3{margin:0}.pro button{width:100%;padding:12px;border:0;border-radius:12px;background:var(--gold);font-weight:800;margin-top:12px}
 </style>
 </head>
 <body>
 <div class="app">
-  <header class="top"><div class="brand"><div class="logo">MC</div>Meu Caixa</div><small id="date"></small></header>
-
-  <main id="dashboard" class="screen active">
-    <div class="hero">
-      <div class="label">Olá, Arthur 👋</div>
-      <div class="balance" id="balance">R$ 0,00</div>
-      <div class="label">Saldo atual</div>
-      <div class="stats">
-        <div class="stat"><span class="label">Entradas</span><b class="green" id="income">R$ 0,00</b></div>
-        <div class="stat"><span class="label">Saídas</span><b class="red" id="expense">R$ 0,00</b></div>
-      </div>
-    </div>
-    <div class="grid">
-      <div class="card"><h3>Entradas - Saídas</h3><div class="gold" id="profit">R$ 0,00</div><small class="muted">resultado do período</small></div>
-      <div class="card"><h3>Lançamentos</h3><div id="count">0</div><small class="muted">registrados</small></div>
-    </div>
-    <div class="actions"><button class="btn primary" onclick="openModal('entrada')">＋ Entrada</button><button class="btn redbtn" onclick="openModal('saida')">− Saída</button></div>
-    <div class="section-head"><h2>Últimos lançamentos</h2><button class="link" onclick="showScreen('mov')">Ver todos</button></div>
-    <div class="card" id="recent"></div>
-  </main>
-
-  <main id="mov" class="screen">
-    <div class="section-head"><h2>Movimentações</h2><button class="link" onclick="openModal('entrada')">＋ Adicionar</button></div>
-    <div class="card" id="alltx"></div>
-  </main>
-
-  <main id="reports" class="screen">
-    <div class="section-head"><h2>Relatórios</h2><button class="link" onclick="exportData()">Exportar</button></div>
-    <div class="grid">
-      <div class="card"><span class="label">Total de entradas</span><h2 class="green" id="rIncome">R$ 0,00</h2></div>
-      <div class="card"><span class="label">Total de saídas</span><h2 class="red" id="rExpense">R$ 0,00</h2></div>
-    </div>
-    <div class="card" style="margin-top:12px"><h3>Resultado</h3><div class="balance gold" id="rProfit">R$ 0,00</div><div class="bar"><i id="rBar" style="width:0%"></i></div><small class="muted">Proporção das entradas usadas nas saídas</small></div>
-    <div class="card" style="margin-top:12px"><h3>Resumo por categoria</h3><table class="table" id="cats"></table></div>
-  </main>
-
-  <main id="clients" class="screen">
-    <div class="section-head"><h2>Clientes</h2><button class="link" onclick="addClient()">＋ Cliente</button></div>
-    <div class="card" id="clientList"></div>
-  </main>
-
-  <main id="more" class="screen">
-    <div class="card"><div class="label">Minha conta</div><h2 style="margin:5px 0">Arthur</h2><small class="muted">Controle financeiro simples e profissional.</small></div>
-    <div style="height:12px"></div>
-    <div class="pro"><span class="pill">PRO</span><h2>Leve seu caixa para outro nível.</h2><div class="muted">Relatórios avançados, clientes, exportação e recursos premium.</div><div class="price">R$ 9,90 <small class="muted">/ mês</small></div><button class="btn primary" onclick="toast('Plano PRO: pagamento será conectado na próxima etapa.')">Conhecer PRO</button></div>
-    <div class="card" style="margin-top:12px"><h3>Dados</h3><button class="btn" style="width:100%;margin-top:8px" onclick="exportData()">Exportar meus dados</button><button class="btn redbtn" style="width:100%;margin-top:8px" onclick="clearData()">Apagar dados deste aparelho</button></div>
-  </main>
+<header class="top"><div class="brand"><div class="logo">▣</div><div><b>Meu <span>Caixa</span></b><small>Seu dinheiro, no controle!</small></div></div><button class="iconbtn">♧</button></header>
+<main id="content"></main>
+<nav class="bottom"><button class="nav active" onclick="home()">⌂<br>Início</button><button class="nav" onclick="openModal('in')">＋<br>Lançar</button><button class="nav plus" onclick="openModal()">+</button><button class="nav" onclick="more()">☰<br>Mais</button></nav>
 </div>
-
-<nav class="bottom">
-<button class="nav active" data-screen="dashboard"><span>⌂</span>Início</button>
-<button class="nav" data-screen="mov"><span>↕</span>Mov.</button>
-<button class="nav" data-screen="reports"><span>▥</span>Relatórios</button>
-<button class="nav" data-screen="more"><span>☰</span>Mais</button>
-</nav>
-
-<div class="modal" id="modal"><div class="sheet">
-  <h2 id="modalTitle">Nova entrada</h2>
-  <div class="field"><label>Descrição</label><input id="desc" placeholder="Ex.: Venda, aluguel, combustível..."></div>
-  <div class="field"><label>Valor</label><input id="value" type="number" step="0.01" inputmode="decimal" placeholder="0,00"></div>
-  <div class="field"><label>Categoria</label><select id="category"><option>Vendas</option><option>Serviços</option><option>Salário</option><option>Alimentação</option><option>Transporte</option><option>Contas</option><option>Outros</option></select></div>
-  <div class="modal-actions"><button class="btn" onclick="closeModal()">Cancelar</button><button class="btn primary" onclick="saveTx()">Salvar</button></div>
-</div></div>
-<div class="toast" id="toast"></div>
-
+<div class="modal" id="modal"><div class="sheet"><button class="close" onclick="closeModal()">×</button><h2>Novo lançamento</h2><div class="type"><button id="tin" onclick="setType('in')">↑ Entrada</button><button id="tout" onclick="setType('out')">↓ Saída</button></div><input id="value" inputmode="decimal" placeholder="Valor (R$)"><input id="desc" placeholder="Descrição"><select id="cat"><option>Vendas</option><option>Serviços</option><option>Alimentação</option><option>Combustível</option><option>Material</option><option>Outros</option></select><button class="save" onclick="saveTx()">Salvar lançamento</button></div></div>
 <script>
-const KEY='meu_caixa_v2';
-let db=JSON.parse(localStorage.getItem(KEY)||'{"tx":[],"clients":[]}');
-let type='entrada';
-
-const money=v=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(v||0);
-const save=()=>localStorage.setItem(KEY,JSON.stringify(db));
-document.getElementById('date').textContent=new Date().toLocaleDateString('pt-BR',{day:'2-digit',month:'short'});
-function totals(){let inc=db.tx.filter(x=>x.type==='entrada').reduce((a,x)=>a+x.value,0);let exp=db.tx.filter(x=>x.type==='saida').reduce((a,x)=>a+x.value,0);return{inc,exp,profit:inc-exp}}
-function render(){
- const t=totals(); document.getElementById('balance').textContent=money(t.profit); document.getElementById('income').textContent=money(t.inc); document.getElementById('expense').textContent=money(t.exp); document.getElementById('profit').textContent=money(t.profit); document.getElementById('count').textContent=db.tx.length;
- document.getElementById('rIncome').textContent=money(t.inc); document.getElementById('rExpense').textContent=money(t.exp); document.getElementById('rProfit').textContent=money(t.profit);
- document.getElementById('rBar').style.width=(t.inc?Math.min(100,t.exp/t.inc*100):0)+'%';
- const html=(list)=>list.length?list.map(x=>`<div class="tx"><div class="ico">${x.type==='entrada'?'↗':'↘'}</div><div class="txmain"><b>${esc(x.desc)}</b><small>${esc(x.category)} · ${new Date(x.date).toLocaleDateString('pt-BR')}</small></div><div class="amount ${x.type==='entrada'?'green':'red'}">${x.type==='entrada'?'+':'-'} ${money(x.value)}</div></div>`).join(''):'<div class="empty">Nenhum lançamento ainda.<br>Comece adicionando uma entrada ou saída.</div>';
- document.getElementById('recent').innerHTML=html(db.tx.slice().reverse().slice(0,5)); document.getElementById('alltx').innerHTML=html(db.tx.slice().reverse());
- const cat={}; db.tx.forEach(x=>{cat[x.category]=(cat[x.category]||0)+(x.type==='entrada'?x.value:-x.value)}); document.getElementById('cats').innerHTML=Object.keys(cat).length?Object.entries(cat).map(([k,v])=>`<tr><td>${esc(k)}</td><td style="text-align:right" class="${v>=0?'green':'red'}">${money(v)}</td></tr>`).join(''):'<tr><td class="muted">Sem dados ainda.</td></tr>';
- document.getElementById('clientList').innerHTML=db.clients.length?db.clients.map(c=>`<div class="tx"><div class="ico">👤</div><div class="txmain"><b>${esc(c.name)}</b><small>${esc(c.phone||'Sem telefone')}</small></div></div>`).join(''):'<div class="empty">Cadastre seus clientes aqui.</div>';
-}
-function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
-function showScreen(id){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('active',x.dataset.screen===id));}
-document.querySelectorAll('.nav').forEach(b=>b.onclick=()=>showScreen(b.dataset.screen));
-function openModal(t){type=t;document.getElementById('modalTitle').textContent=t==='entrada'?'Nova entrada':'Nova saída';document.getElementById('desc').value='';document.getElementById('value').value='';document.getElementById('modal').classList.add('show');setTimeout(()=>document.getElementById('desc').focus(),100)}
-function closeModal(){document.getElementById('modal').classList.remove('show')}
-function saveTx(){let desc=document.getElementById('desc').value.trim(),value=parseFloat(document.getElementById('value').value),category=document.getElementById('category').value;if(!desc||!value||value<=0){toast('Preencha descrição e valor.');return}db.tx.push({id:Date.now(),type,desc,value,category,date:new Date().toISOString()});save();closeModal();render();toast('Lançamento salvo automaticamente ✓')}
-function addClient(){let name=prompt('Nome do cliente:');if(!name)return;let phone=prompt('Telefone (opcional):')||'';db.clients.push({id:Date.now(),name,phone});save();render();toast('Cliente salvo ✓')}
-function exportData(){const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='meu-caixa-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500);toast('Backup exportado ✓')}
-function clearData(){if(confirm('Apagar todos os lançamentos e clientes deste aparelho?')){db={tx:[],clients:[]};save();render();toast('Dados apagados.')}} 
-function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200)}
-render();
+const KEY='meu_caixa_v1';let tx=JSON.parse(localStorage.getItem(KEY)||'[]');let type='in';
+const brl=n=>n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+function totals(){let ins=tx.filter(x=>x.type==='in').reduce((a,x)=>a+x.value,0),outs=tx.filter(x=>x.type==='out').reduce((a,x)=>a+x.value,0);return {ins,outs,balance:ins-outs}}
+function home(){let t=totals();document.getElementById('content').innerHTML=`<div class="hello"><h2>Olá, Arthur 👋</h2><p>Aqui está o resumo do seu negócio hoje.</p></div><div class="balance"><small>Saldo atual</small><strong>${brl(t.balance)}</strong></div><div class="stats"><div class="stat"><small>Entradas</small><b class="green">${brl(t.ins)}</b></div><div class="stat"><small>Saídas</small><b class="red">${brl(t.outs)}</b></div><div class="stat"><small>Lucro</small><b class="gold">${brl(t.balance)}</b></div></div><div class="section"><h3>Movimentações</h3><span class="link">${tx.length} registro(s)</span></div><div class="list">${tx.length?tx.slice().reverse().map(x=>`<div class="item"><div class="circle ${x.type}">${x.type==='in'?'↑':'↓'}</div><div class="mid"><b>${escapeHtml(x.desc)}</b><small>${escapeHtml(x.cat)} · ${x.date}</small></div><div class="amount ${x.type==='in'?'green':'red'}">${x.type==='in'?'+':'-'} ${brl(x.value)}</div></div>`).join(''):'<div class="empty">Nenhuma movimentação ainda.<br>Toque no + para começar.</div>'}</div>`}
+function more(){document.getElementById('content').innerHTML=`<div class="hello"><h2>Mais</h2><p>Gerencie sua conta e recursos.</p></div><div class="list"><div class="item"><div class="circle">👤</div><div class="mid"><b>Arthur</b><small>Proprietário do Meu Caixa</small></div></div><div class="item"><div class="circle">⚙</div><div class="mid"><b>Configurações</b><small>Preferências do aplicativo</small></div></div></div><div class="pro"><h3>👑 Meu Caixa <span class="gold">PRO</span></h3><p style="color:var(--muted)">Relatórios avançados, clientes, exportação e backup.</p><b>R$ 9,90/mês</b><button>Assinar agora</button></div>`}
+function openModal(t='in'){document.getElementById('modal').classList.add('show');setType(t)}function closeModal(){document.getElementById('modal').classList.remove('show')}
+function setType(t){type=t;document.getElementById('tin').className=t==='in'?'sel in':'';document.getElementById('tout').className=t==='out'?'sel out':''}
+function saveTx(){let value=parseFloat(document.getElementById('value').value.replace(',','.'));let desc=document.getElementById('desc').value.trim();if(!value||value<=0||!desc){alert('Preencha valor e descrição.');return}tx.push({type,value,desc,cat:document.getElementById('cat').value,date:new Date().toLocaleDateString('pt-BR')});localStorage.setItem(KEY,JSON.stringify(tx));document.getElementById('value').value='';document.getElementById('desc').value='';closeModal();home()}
+function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+home();
 </script>
-</body>
-</html>
+</body></html>
