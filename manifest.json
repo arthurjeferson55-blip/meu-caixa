@@ -1,0 +1,9 @@
+{
+  "name":"Meu Caixa",
+  "short_name":"Meu Caixa",
+  "start_url":".",
+  "display":"standalone",
+  "background_color":"#090b0f",
+  "theme_color":"#0b0d10",
+  "description":"Controle financeiro simples e profissional."
+}
